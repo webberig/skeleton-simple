@@ -64,6 +64,16 @@ module.exports = function(grunt) {
                     "<%=folder.dist%>/css/screen.css": "<%=folder.src%>/less/css-screen.less"
                 }
             }
+        },
+        watch: {
+            js: {
+                files: '<%= folder.src %>/js/**/*.js',
+                tasks: ['js']
+            },
+            less: {
+                files: '<%= folder.src %>/less/**',
+                tasks: ['css']
+            }
         }
     });
 
@@ -71,6 +81,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('js', ['concat']);
     grunt.registerTask('css', 'less');
