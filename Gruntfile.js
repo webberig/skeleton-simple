@@ -42,14 +42,20 @@ module.exports = function(grunt) {
         },
 
         uglify: {
-            site: {
-                src: ['<%=folder.dist%>/js/site.js'],
-                dest: '<%=folder.dist%>/js/site.js'
+            options: {
+                compress: {
+                    drop_console: true
+                }
             },
-            modernizr: {
-                src: ['<%=folder.dist%>/js/modernizr.js'],
-                dest: '<%=folder.dist%>/js/modernizr.js'
+            all: {
+                files: [{
+                    expand: true,
+                    cwd: '<%=folder.dist%>/js',
+                    src: '**/*.js',
+                    dest: '<%=folder.dist%>/js'
+                }]
             }
+
         },
         less: {
             application: {
@@ -74,20 +80,50 @@ module.exports = function(grunt) {
                 files: '<%= folder.src %>/less/**',
                 tasks: ['css']
             }
+        },
+        autoprefixer: {
+            options: {
+                browsers: ['> 3% in BE', 'ie 8', 'ie 9']
+            },
+            your_target: {
+                files: [{
+                    expand: true,
+                    cwd: '<%=folder.dist%>/css',
+                    src: '**/*.js',
+                    dest: '<%=folder.dist%>/css'
+                }]
+            }
+        },
+        cssmin: {
+            options: {
+                // Task-specific options go here.
+            },
+            your_target: {
+                files: [{
+                    expand: true,
+                    cwd: '<%=folder.dist%>/css',
+                    src: '**/*.js',
+                    dest: '<%=folder.dist%>/css'
+                }]
+            }
         }
+
     });
 
     // Load tasks from "grunt-sample" grunt plugin installed via Npm.
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('js', ['concat']);
-    grunt.registerTask('css', 'less');
+    grunt.registerTask('css', ['less', 'autoprefixer']);
+    grunt.registerTask('build', ['css', 'js']);
 
     // Default task.
-    grunt.registerTask('default', ['css', 'js']);
-    grunt.registerTask('deploy', ['default', 'uglify']);
+    grunt.registerTask('default', ['build', 'watch']);
+    grunt.registerTask('deploy', ['default', 'uglify', 'cssmin']);
 
 };
