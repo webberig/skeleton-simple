@@ -11,21 +11,21 @@ module.exports = function(grunt) {
         {
             site: {
                 src: [
-                    '<%=folder.components%>/jquery/jquery.js',
+                    '<%=folder.components%>/jquery/dist/jquery.js',
 
                     // Twitter bootstrap
-                    '<%=folder.components%>/bootstrap/js/affix.js',
-                    '<%=folder.components%>/bootstrap/js/alert.js',
-                    '<%=folder.components%>/bootstrap/js/button.js',
-                    '<%=folder.components%>/bootstrap/js/carousel.js',
-                    '<%=folder.components%>/bootstrap/js/collapse.js',
-                    '<%=folder.components%>/bootstrap/js/dropdown.js',
-                    '<%=folder.components%>/bootstrap/js/modal.js',
-                    '<%=folder.components%>/bootstrap/js/tooltip.js',
-                    '<%=folder.components%>/bootstrap/js/popover.js',
-                    '<%=folder.components%>/bootstrap/js/scrollspy.js',
-                    '<%=folder.components%>/bootstrap/js/tab.js',
-                    '<%=folder.components%>/bootstrap/js/transition.js',
+                    // '<%=folder.components%>/bootstrap/js/affix.js',
+                    // '<%=folder.components%>/bootstrap/js/alert.js',
+                    // '<%=folder.components%>/bootstrap/js/button.js',
+                    // '<%=folder.components%>/bootstrap/js/carousel.js',
+                    // '<%=folder.components%>/bootstrap/js/collapse.js',
+                    // '<%=folder.components%>/bootstrap/js/dropdown.js',
+                    // '<%=folder.components%>/bootstrap/js/modal.js',
+                    // '<%=folder.components%>/bootstrap/js/tooltip.js',
+                    // '<%=folder.components%>/bootstrap/js/popover.js',
+                    // '<%=folder.components%>/bootstrap/js/scrollspy.js',
+                    // '<%=folder.components%>/bootstrap/js/tab.js',
+                    // '<%=folder.components%>/bootstrap/js/transition.js',
 
                     // Others
                     '<%=folder.src%>/js/*.js'
